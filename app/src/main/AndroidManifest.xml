@@ -10,13 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ValorantTracking">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".view.activities.MainMenuActivity"
+            android:exported="true"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.ValorantTracking.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activities.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.ValorantTracking.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.activities.SplashActivity"
+            android:exported="true">
+
         </activity>
     </application>
 
