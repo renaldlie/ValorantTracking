@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.valoranttracking.R;
 
-public class SplashActivity extends AppCompatActivity {
+public class splashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
