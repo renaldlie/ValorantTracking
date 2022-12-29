@@ -12,14 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ValorantTracking">
         <activity
-            android:name=".agentActivity"
+            android:name=".view.activities.agentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-            android:name=".view.activities.mainMenuActivity"
+            android:name=".view.activities.splashActivity"
             android:exported="true"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.ValorantTracking.NoActionBar">
@@ -33,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.activities.loginActivity"
             android:exported="false"
@@ -43,8 +45,12 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.activities.splashActivity"
+            android:name=".view.activities.mainMenuActivity"
             android:exported="true"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -2,27 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profile"/>
-
-    <item
         android:id="@+id/nav_agent"
         android:icon="@drawable/ic_baseline_anchor_24"
         android:title="Agent"/>
 
     <item
         android:id="@+id/nav_maps"
-        android:icon="@drawable/ic_baseline_anchor_24"
-        android:title="Maps"/>
+        android:icon="@drawable/ic_baseline_map_24"
+        android:title="Maps" />
 
     <item
         android:id="@+id/nav_weapons"
-        android:icon="@drawable/ic_baseline_anchor_24"
-        android:title="Weapons"/>
+        android:icon="@drawable/ic_baseline_rocket_24"
+        android:title="Weapons" />
 
     <item
         android:id="@+id/nav_ranks"
-        android:icon="@drawable/ic_baseline_anchor_24"
-        android:title="Ranks"/>
+        android:icon="@drawable/ic_baseline_stacked_line_chart_24"
+        android:title="Ranks" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile" />
 </menu>
