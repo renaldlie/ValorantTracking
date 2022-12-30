@@ -1,6 +1,7 @@
 package com.example.valoranttracking.retrofit;
 
 import com.example.valoranttracking.model.Agents;
+import com.example.valoranttracking.model.Maps;
 
 import java.util.List;
 
@@ -11,5 +12,8 @@ public interface ApiEndPoint {
 
     @GET("mahasiswa/")
     Call<List<Agents>> getAgents();
+
+    @GET("maps/")
+    Call<List<Maps>> getMaps();
 
 }

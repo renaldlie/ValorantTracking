@@ -1,6 +1,7 @@
 package com.example.valoranttracking.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class agentAdapter extends RecyclerView.Adapter<agentAdapter.ViewHolder> 
         Agents agents = listAgents.get(position);
         holder.name.setText(agents.getName());
         holder.role.setText(agents.getNim());
+        holder.img_agent.setImageResource(R.drawable.valorant_jett);
 
     }
 
@@ -50,12 +52,13 @@ public class agentAdapter extends RecyclerView.Adapter<agentAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name,role,prodi ;
-        public ImageView img_doctor;
+        public ImageView img_agent;
 
         public ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.lbl_name);
             role = itemView.findViewById(R.id.lbl_role);
+            img_agent = itemView.findViewById(R.id.img_poster_agent);
         }
     }
 }

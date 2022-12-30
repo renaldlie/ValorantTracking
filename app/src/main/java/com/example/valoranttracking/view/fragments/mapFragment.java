@@ -3,12 +3,27 @@ package com.example.valoranttracking.view.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.valoranttracking.R;
+import com.example.valoranttracking.adapter.agentAdapter;
+import com.example.valoranttracking.adapter.mapAdapter;
+import com.example.valoranttracking.model.Maps;
+import com.example.valoranttracking.retrofit.ApiEndPoint;
+import com.example.valoranttracking.retrofit.ApiService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +31,11 @@ import com.example.valoranttracking.R;
  * create an instance of this fragment.
  */
 public class mapFragment extends Fragment {
+
+    ApiEndPoint apiEndPoint;
+    RecyclerView recMaps;
+    mapAdapter adapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +75,43 @@ public class mapFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        apiEndPoint = ApiService.getClient().create(ApiEndPoint.class);
+        getAllMaps();
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+        recMaps = view.findViewById(R.id.rv_maps);
+
+        recMaps.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return view;
+
+
+    }
+
+    public void getAllMaps(){
+        Call<List<Maps>> getNews = apiEndPoint.getMaps();
+        getNews.enqueue(new Callback<List<Maps>>() {
+            @Override
+            public void onResponse(Call<List<Maps>> call, Response<List<Maps>> response) {
+                ArrayList<Maps> listMaps = (ArrayList<Maps>) response.body();
+                Log.d("list_maps: ", response.raw().body().toString());
+                Log.d("list_maps: ", listMaps.toString());
+
+                adapter = new mapAdapter(listMaps);
+                recMaps.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Maps>> call, Throwable t) {
+                Log.d("error_news: ", t.getMessage());
+            }
+        });
     }
 }
