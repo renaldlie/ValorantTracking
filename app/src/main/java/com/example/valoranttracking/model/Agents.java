@@ -7,65 +7,42 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class Agents implements Parcelable {
-    private String Nim;
-    private String Name;
-    private String Prodi;
+public class Agents {
+    private String nim;
+    private String name;
+    private String prodi;
 
 
 
 
     protected Agents(Parcel in) {
-        Nim = in.readString();
-        Name = in.readString();
-        Prodi = in.readString();
-    }
-
-    public static final Creator<Agents> CREATOR = new Creator<Agents>() {
-        @Override
-        public Agents createFromParcel(Parcel in) {
-            return new Agents(in);
-        }
-
-        @Override
-        public Agents[] newArray(int size) {
-            return new Agents[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(Nim);
-        dest.writeString(Name);
-        dest.writeString(Prodi);
+        this.nim = nim;
+        this.name = name;
+        this.prodi = prodi;
     }
 
     public String getNim() {
-        return Nim;
+        return nim;
     }
 
     public void setNim(String nim) {
-        this.Nim = nim;
+        nim = nim;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        name = name;
     }
 
     public String getProdi() {
-        return Prodi;
+        return prodi;
     }
 
     public void setProdi(String prodi) {
-        this.Prodi = prodi;
+        prodi = prodi;
     }
 }
+

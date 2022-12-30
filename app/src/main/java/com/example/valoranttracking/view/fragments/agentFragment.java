@@ -3,18 +3,26 @@ package com.example.valoranttracking.view.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.valoranttracking.R;
+import com.example.valoranttracking.adapter.agentAdapter;
 import com.example.valoranttracking.model.Agents;
 import com.example.valoranttracking.retrofit.ApiEndPoint;
 import com.example.valoranttracking.retrofit.ApiService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +30,10 @@ import retrofit2.Call;
  * create an instance of this fragment.
  */
 public class agentFragment extends Fragment {
+
+    ApiEndPoint apiEndPoint;
+    RecyclerView recAgents;
+    agentAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,9 +73,12 @@ public class agentFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        apiEndPoint = ApiService.getClient().create(ApiEndPoint.class);
+        getAllAgents();
     }
 
-    private RecyclerView rv_agent;
+
 
 
 
@@ -71,7 +86,12 @@ public class agentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agent, container, false);
+        View view =  inflater.inflate(R.layout.fragment_agent, container, false);
+
+        recAgents = view.findViewById(R.id.rv_agents);
+        recAgents.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return view;
 
 
 
@@ -80,5 +100,25 @@ public class agentFragment extends Fragment {
 
 
 
+    }
+
+    private void getAllAgents(){
+        Call<List<Agents>> getNews = apiEndPoint.getAgents();
+        getNews.enqueue(new Callback<List<Agents>>() {
+            @Override
+            public void onResponse(Call<List<Agents>> call, Response<List<Agents>> response) {
+                ArrayList<Agents> listAgents = (ArrayList<Agents>) response.body();
+                Log.d("list_agents: ", response.raw().body().toString());
+                Log.d("list_agents: ", listAgents.toString());
+
+                adapter = new agentAdapter(listAgents);
+                recAgents.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Agents>> call, Throwable t) {
+                Log.d("error_news: ", t.getMessage());
+            }
+        });
     }
 }

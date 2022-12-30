@@ -14,53 +14,48 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.valoranttracking.R;
 import com.example.valoranttracking.model.Agents;
 
-public class agentAdapter extends RecyclerView.Adapter<agentAdapter.CardViewViewHolder> {
+import java.util.ArrayList;
 
-    private Context context;
-    public agentAdapter(Context context){ this.context = context; }
+public class agentAdapter extends RecyclerView.Adapter<agentAdapter.ViewHolder> {
 
+    ArrayList<Agents> listAgents;
 
+    public agentAdapter(ArrayList<Agents> listAgents) {
+        this.listAgents = listAgents;
+    }
 
     @NonNull
     @Override
-    public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_listdoctor, parent, false);
-        return new agentAdapter.CardViewViewHolder(view);
+    public agentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        ViewHolder holder = new ViewHolder(inflater.inflate(R.layout.card_listdoctor, parent, false));
+
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull agentAdapter.CardViewViewHolder holder, int position) {
-
-        final Agents agents = null;
-
-        holder.lbl_agent.setText(agents.getName());
-        holder.lbl_role.setText(agents.getProdi());
+    public void onBindViewHolder(@NonNull agentAdapter.ViewHolder holder, int position) {
+        Agents agents = listAgents.get(position);
+        holder.name.setText(agents.getName());
+        holder.role.setText(agents.getNim());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listAgents.size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView img_agent;
-        TextView lbl_agent, lbl_role;
-        CardView cv;
+        public TextView name,role,prodi ;
+        public ImageView img_doctor;
 
-        public CardViewViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-
-            img_agent = itemView.findViewById(R.id.img_poster_agent);
-            lbl_agent = itemView.findViewById(R.id.lbl_name);
-            lbl_role = itemView.findViewById(R.id.lbl_role);
-
-
-            cv = itemView.findViewById(R.id.cv_card_agent);
-
-
-
+            name = itemView.findViewById(R.id.lbl_name);
+            role = itemView.findViewById(R.id.lbl_role);
         }
     }
 }
