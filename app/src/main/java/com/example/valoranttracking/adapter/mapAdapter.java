@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.valoranttracking.R;
-import com.example.valoranttracking.model.Agents;
 import com.example.valoranttracking.model.Maps;
 
 import java.util.ArrayList;
