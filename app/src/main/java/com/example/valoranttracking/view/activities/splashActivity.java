@@ -17,7 +17,7 @@ public class splashActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             //habis splash screen lalu pindah ke login
-            Intent agent = new Intent(this, mainMenuActivity.class);
+            Intent agent = new Intent(this, loginActivity.class);
             startActivity(agent);
             finish();
         },2000);
