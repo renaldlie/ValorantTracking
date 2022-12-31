@@ -40,6 +40,7 @@ public class agentAdapter extends RecyclerView.Adapter<agentAdapter.ViewHolder> 
         Agents agents = listAgents.get(position);
         holder.name.setText(agents.getName());
         holder.role.setText(agents.getNim());
+
         holder.img_agent.setImageResource(R.drawable.valorant_jett);
 
     }
