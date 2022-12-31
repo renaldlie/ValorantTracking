@@ -55,6 +55,7 @@
             android:id="@+id/lbl_passwordLayout"
             android:layout_width="344dp"
             android:layout_height="71dp"
+            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -63,6 +64,7 @@
                 android:id="@+id/lbl_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:hint="Password" />
 
         </com.google.android.material.textfield.TextInputLayout>
