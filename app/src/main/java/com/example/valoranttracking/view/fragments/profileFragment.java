@@ -1,5 +1,7 @@
 package com.example.valoranttracking.view.fragments;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.valoranttracking.R;
 
@@ -91,6 +94,8 @@ public class profileFragment extends Fragment {
                     public void onClick(DialogInterface dialog,int id) {
 
                         getActivity().finish();
+                        Toast.makeText(getActivity(), "Logout Succesful !",
+                                LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -102,5 +107,6 @@ public class profileFragment extends Fragment {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+
     }
 }

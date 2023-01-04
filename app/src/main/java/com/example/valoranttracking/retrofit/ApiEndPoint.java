@@ -12,7 +12,7 @@ import retrofit2.http.GET;
 
 public interface ApiEndPoint {
 
-    @GET("mahasiswa/")
+    @GET("agents/")
     Call<List<Agents>> getAgents();
 
     @GET("maps/")
