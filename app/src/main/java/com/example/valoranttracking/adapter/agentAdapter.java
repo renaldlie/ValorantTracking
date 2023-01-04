@@ -38,8 +38,8 @@ public class agentAdapter extends RecyclerView.Adapter<agentAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull agentAdapter.ViewHolder holder, int position) {
         Agents agents = listAgents.get(position);
-        holder.name.setText(agents.getName());
-        holder.role.setText(agents.getNim());
+        holder.name.setText(agents.getAgents_name());
+        holder.role.setText(agents.getAgents_role());
 
         holder.img_agent.setImageResource(R.drawable.valorant_jett);
 
