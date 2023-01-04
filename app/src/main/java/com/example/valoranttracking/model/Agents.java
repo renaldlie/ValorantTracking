@@ -5,39 +5,44 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 
 public class Agents {
+    private String nim;
+    private String name;
+    private String prodi;
 
-    @SerializedName("agents_name")
-    private String agents_name;
-    @SerializedName("agents_role")
-    private String agents_role;
 
 
 
     protected Agents(Parcel in) {
-        this.agents_name = agents_name;
-        this.agents_role = agents_role;
+        this.nim = nim;
+        this.name = name;
+        this.prodi = prodi;
     }
 
-    public String getAgents_name() {
-        return agents_name;
+    public String getNim() {
+        return nim;
     }
 
-    public void setAgents_name(String agents_name) {
-        agents_name = agents_name;
+    public void setNim(String nim) {
+        nim = nim;
     }
 
-    public String getAgents_role() {
-        return agents_role;
+    public String getName() {
+        return name;
     }
 
-    public void setAgents_role(String agents_role) {
-        agents_role = agents_role;
+    public void setName(String name) {
+        name = name;
     }
 
+    public String getProdi() {
+        return prodi;
+    }
+
+    public void setProdi(String prodi) {
+        prodi = prodi;
+    }
 }
 
